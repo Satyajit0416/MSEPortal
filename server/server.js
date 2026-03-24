@@ -13,7 +13,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+const uploadDir = process.env.NODE_ENV === 'production' 
+  ? '/tmp/uploads' 
+  : path.join(__dirname, 'uploads');
+app.use('/uploads', express.static(uploadDir));
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
