@@ -1,0 +1,10 @@
+{
+  "name": "mse-license",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm:start --prefix server\" \"npm:dev --prefix client\""
+  }
+}
